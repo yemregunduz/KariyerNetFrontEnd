@@ -1,0 +1,95 @@
+
+<div class="container pb-5 mb-sm-4" style="margin-top: 200px;">
+    <div class="row pt-5">
+        <div class="col-md-6 pt-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="h4 mb-1">Giriş yap ve ya  <button mat-raised-button style="margin-left:20px" routerLink="/nonlogin" >Giriş yapmadan devam et</button ></h2>
+                    
+                    <h3 class="h6 font-weight-semibold opacity-70 pt-4 pb-2">Ya da aşağıdaki formu kullanın</h3>
+                    <form class="needs-validation" [formGroup]="adayGirisForm" novalidate="">
+                        <small  *ngIf="adayGirisForm.controls['email'].invalid && adayGirisForm.controls['email'].touched " class="text-danger">Geçerli bir mail adresi giriniz.</small>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span></div>
+                            <input class="form-control" type="email" placeholder="Email" required="" formControlName="email">
+                        </div>
+                        
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span></div>
+                            <input class="form-control" type="password" placeholder="Şifre" required="" formControlName="sifre">              
+                        </div>
+                        <small  *ngIf="adayGirisForm.controls['sifre'].invalid && adayGirisForm.controls['sifre'].touched " class="text-danger">Şifre alanı doldurulmalıdır.</small>
+                        <div class="d-flex flex-wrap justify-content-between">
+                            <div class="custom-control custom-checkbox" >
+                                <mat-slide-toggle color="primary"></mat-slide-toggle>
+                                <small class="text-secondary" style="margin-left: 3px;">Beni hatırla</small>
+                                
+                            </div><a class="nav-link-inline font-size-sm" href="account-password-recovery.html">Şifrenizi unuttunuz mu?</a>
+                        </div>
+                        <hr class="mt-4">
+                        <div class="text-right pt-4">
+                            <button mat-stroked-button color="success" type="submit" (click)="adayGirisYap()">Giriş yap</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pt-5 pt-sm-3">
+            <h2 class="h4 mb-3">Hesabınız yok mu? Hemen üyelik oluşturun.</h2>
+            <p class="text-muted mb-4">Kişisel verileriniz 6698 sayılı kişisel verileri koruma kanunu kapsamında korunmaktadır.</p>
+            <form class="needs-validation" [formGroup]="adayKayitForm" novalidate="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reg-fn">Ad</label>
+                            <input class="form-control" type="text" required="" formControlName="ad" id="reg-fn">
+                            <small  *ngIf="adayKayitForm.controls['ad'].touched && adayKayitForm.controls['ad'].invalid " class="text-danger">Ad alanı doldurulmalıdır</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reg-ln">Soyad</label>
+                            <input class="form-control" type="text" required="" formControlName="soyad" id="reg-ln">
+                            <small  *ngIf="adayKayitForm.controls['soyad'].touched && adayKayitForm.controls['soyad'].invalid " class="text-danger">Soyad alanı doldurulmalıdır</small>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reg-phone">T.C Kimlik No</label>
+                            <input class="form-control" type="text" required="" formControlName="tcNo" id="reg-phone">
+                            <small  *ngIf="adayKayitForm.controls['tcNo'].touched && adayKayitForm.controls['tcNo'].invalid " class="text-danger">Geçerli bir T.C Kimlik No giriniz.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reg-password">Doğum Yılı</label>
+                            <input class="form-control" type="number" required="" formControlName="dogumYili" id="reg-password">
+                            <small  *ngIf="adayKayitForm.controls['dogumYili'].touched && adayKayitForm.controls['dogumYili'].invalid " class="text-danger">Doğum yılı alanı doldurulmalıdır</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="reg-email">E-mail Adresi</label>
+                            <input class="form-control" type="email" required="" formControlName="email" id="reg-email">
+                            <small  *ngIf="adayKayitForm.controls['email'].invalid && adayKayitForm.controls['email'].touched " class="text-danger">Geçerli bir mail adresi giriniz.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            
+                            <label for="reg-password-confirm">Şifre</label>
+                            <input class="form-control" type="password" required="" formControlName="sifre" id="reg-password-confirm">
+                            <small  *ngIf="adayKayitForm.controls['sifre'].invalid && adayKayitForm.controls['sifre'].touched " class="text-danger">Şifre minimum 8 karakter,bir büyük harf ve bir sayı içemelidir. </small>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button mat-stroked-button color="success" type="submit" (click)="adayKayitOl()">Kayıt Ol</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

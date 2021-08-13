@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" >
+          
+        </div>
+        <div class="col-md-6"  >
+            <table *ngIf="ilanlar.length>0"style="margin:auto">
+        
+                <tbody>
+                    <td>
+                        <div class="shadow-lg p-3 mb-5 bg-body rounded" *ngFor="let ilan of ilanlar | paginate: 
+                        {id:'listing_pagination',itemsPerPage:5,currentPage:sayfa,totalItems:toplamKayit}" style="margin-top: 15px; width: 550px; ">
+                            <div class="shadow-lg-body">
+                              
+                              <h3 class="shadow-lg-title">
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <img src="{{ilan.sirketImagePath}}" alt="fotoğraf bulunamadi" class="img-thumbnail" width="75" >
+                                  </div>
+                                  <div class="col-md-10"  >
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <p class="fw-bolder" style="margin-bottom: 0px; ">{{ilan.pozisyonAd}}</p>
+                                        <p class="text" style="text-transform:uppercase;margin-bottom: 0mm; font-size: 15px; font-family: Georgia, 'Times New Roman', Times, serif;">{{ilan.sirketAdi}}</p>
+                                        <p class="text-secondary" style="font-size: 13px;" >{{ilan.sehirAdi}}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </h3>
+                              <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-outline-success" (click)="basvur()">Başvur</button>
+                                <button type="button" class="btn btn-outline-danger" (click)="detay()">Detay</button>
+                                
+                              </div>
+                              <div class="badge bg-light text-wrap" style="width: 5rem; height: 1rem; color:black;text-align: center; float: right; margin-top: 15px;">
+                                {{ilan.ilanYayinTarih | date:'dd-MM-y'}}
+                              </div>
+                              
+                            </div>
+                          </div>
+                    </td>
+                </tbody>
+                <tfoot>
+                    <div>
+                        <pagination-controls class="pagination-controls" id="listing_pagination" (pageChange)="onPageChange($event)"  nextLabel="İleri" previousLabel="Geri">  </pagination-controls>
+                    </div>
+                </tfoot>
+            </table>
+            
+            
+            
+            <div *ngIf="ilanlar.length==0" style="margin-top: 150px;"class="p-3 mb-2 bg-danger text-white">Aradığınız kriterlere uygun ilan bulunamadı!</div>
+            
+        </div>
+    </div>
+</div>

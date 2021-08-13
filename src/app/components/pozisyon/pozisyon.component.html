@@ -1,0 +1,52 @@
+
+<div class="container">
+  <div class="row">
+    <div class=card style="margin-top: 15px;">
+      <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
+        <div [formGroup]="searchIlanForm">
+          <div class="row">
+            <div class="col">
+              <select id="sehirSelectClass" class="form-select form-control-sm" [(ngModel)]="selectedSehir"
+                (change)=" getAllIsverenDetayDtoBySehirId()" formControlName="sehirId">
+                <option value="0">Tüm şehirler</option>
+                <option *ngFor="let sehir of sehirler | siralama:'sehirAdi'" [value]="sehir.id">{{sehir.sehirAdi}}
+                </option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select form-control-sm" formControlName="isverenId">
+                <option value="0">Tüm şirketler</option>
+                <option *ngFor="let isverenDetayDto of isverenler | siralama:'sirketAdi' " [value]="isverenDetayDto.id">
+                  {{isverenDetayDto.sirketAdi}}</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select form-control-sm" formControlName="pozisyonId">
+                <option value="0">Tüm pozisyonlar</option>
+                <option *ngFor="let pozisyon of pozisyonlar | siralama:'pozisyonAd' " [value]="pozisyon.id">
+                  {{pozisyon.pozisyonAd}}</option>
+              </select>
+            </div>
+            <div class="col">
+              <button class="btn btn-outline-success" (click)="getAllIlanBySerchParameters()">İlan ara</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 15px; ">
+      <div class="row">
+        <div class="card" style="width: 15rem;padding: 0%;margin-left: 11px; margin-top: 15px; margin-bottom: 15px;"
+          *ngFor="let pozisyon of pozisyonlar">
+          <img class="card-img-top" [attr.srcset]="pozisyon.imagePath" style="height: 286px;" alt="Card image cap" o>
+          <div class="card-body">
+            <h3 class="card-title">{{pozisyon.pozisyonAd}}</h3>
+            <p class="card-text">Bu pozisyonda ilan bulunuyor.</p>
+            <a routerLink="/ilanlar/pozisyonlar/{{pozisyon.id}}" class="btn btn-outline-success">İlanlara git</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,8 @@
+.btn-outline-danger{
+    border-color: #db4343;
+    box-shadow: inset 0 1px 1px rgba(22, 226, 32, 0.075), 0 0 8px rgba(28, 102, 18, 0.6);
+}
+.form-select:focus {
+    border-color: #a2bda2;
+    box-shadow: inset 0 1px 1px rgba(215, 236, 216, 0.075), 0 0 8px rgba(128, 219, 116, 0.6);
+}
